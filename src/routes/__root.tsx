@@ -1,4 +1,5 @@
 import { Link, Outlet, createRootRoute } from "@tanstack/react-router";
+import { ModeToggle } from "@/components/mode-toggle";
 import { Providers } from "@/components/providers";
 
 const RootLayout = () => (
@@ -13,6 +14,7 @@ const RootLayout = () => (
     </div>
     <hr />
     <Outlet />
+    <ModeToggle className="fixed right-2 bottom-2" />
   </Providers>
 );
 export const Route = createRootRoute({ component: RootLayout });
