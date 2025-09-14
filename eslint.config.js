@@ -1,5 +1,6 @@
 // @ts-check
 import js from "@eslint/js";
+import tanStackRouter from "@tanstack/eslint-plugin-router";
 import prettier from "eslint-config-prettier";
 import reactHooks from "eslint-plugin-react-hooks";
 import reactRefresh from "eslint-plugin-react-refresh";
@@ -15,6 +16,23 @@ export default defineConfig([
   },
   tseslint.configs.recommendedTypeChecked,
   {
+    name: "allow-tanstack-router-throw-redirect",
+    rules: {
+      "@typescript-eslint/only-throw-error": [
+        "error",
+        {
+          allow: [
+            {
+              from: "package",
+              package: "@tanstack/router-core",
+              name: "Redirect"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
     name: "language-options",
     languageOptions: {
       ecmaVersion: 2020,
@@ -27,6 +45,7 @@ export default defineConfig([
   },
   reactHooks.configs["recommended-latest"],
   reactRefresh.configs.vite,
+  ...tanStackRouter.configs["flat/recommended"],
   {
     name: "prettier",
     ...prettier
