@@ -8,7 +8,7 @@ import globals from "globals";
 import tseslint from "typescript-eslint";
 
 export default defineConfig([
-  globalIgnores(["dist/", "convex/_generated/"]),
+  globalIgnores(["dist/", "convex/_generated/", "routeTree.gen.ts"]),
   {
     name: "js/recommended",
     ...js.configs.recommended
