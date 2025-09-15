@@ -33,8 +33,9 @@
     /* Path Aliases */
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "backend/*": ["./convex/*"]
     }
   },
-  "include": ["src"]
+  "include": ["src", "convex"]
 }
