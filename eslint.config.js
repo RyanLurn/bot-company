@@ -1,4 +1,5 @@
 // @ts-check
+import convex from "@convex-dev/eslint-plugin";
 import js from "@eslint/js";
 import tanStackRouter from "@tanstack/eslint-plugin-router";
 import prettier from "eslint-config-prettier";
@@ -46,6 +47,8 @@ export default defineConfig([
   reactHooks.configs["recommended-latest"],
   reactRefresh.configs.vite,
   ...tanStackRouter.configs["flat/recommended"],
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+  ...convex.configs.recommended,
   {
     name: "prettier",
     ...prettier
