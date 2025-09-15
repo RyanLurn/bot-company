@@ -1,19 +1,24 @@
-import { Link, Outlet, createRootRoute } from "@tanstack/react-router";
-import { ModeToggle } from "@/components/mode-toggle";
+import { SignInButton, UserButton } from "@clerk/clerk-react";
+import { Outlet, createRootRoute } from "@tanstack/react-router";
+import { AuthLoading, Authenticated, Unauthenticated } from "convex/react";
 import { Providers } from "@/components/providers";
+import { ModeToggle } from "@/components/utils/mode-toggle";
+import { ScreenLoader } from "@/components/utils/screen-loader";
 
 const RootLayout = () => (
   <Providers>
-    <div className="flex gap-2 p-2">
-      <Link to="/" className="[&.active]:font-bold">
-        Home
-      </Link>{" "}
-      <Link to="/about" className="[&.active]:font-bold">
-        About
-      </Link>
-    </div>
-    <hr />
-    <Outlet />
+    <Unauthenticated>
+      <SignInButton />
+    </Unauthenticated>
+    <Authenticated>
+      <div className="fixed top-2 right-2">
+        <UserButton />
+      </div>
+      <Outlet />
+    </Authenticated>
+    <AuthLoading>
+      <ScreenLoader />
+    </AuthLoading>
     <ModeToggle className="fixed right-2 bottom-2" />
   </Providers>
 );
